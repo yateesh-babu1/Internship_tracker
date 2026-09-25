@@ -1,0 +1,146 @@
+<%- include("../partials/head", { title: "Interviews | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <div class="form-page-header">
+
+            <div>
+                <p class="form-breadcrumb">
+                    Dashboard / Internship / Interviews
+                </p>
+
+                <h1>Interviews</h1>
+
+                <p>
+                    Manage interviews for
+                    <strong><%= internship.role %></strong>
+                    at
+                    <strong><%= internship.Company.name %></strong>.
+                </p>
+            </div>
+
+            <a
+                href="/internships/<%= internship.id %>/interviews/new"
+                class="form-submit-btn"
+            >
+                + Add Interview
+            </a>
+
+        </div>
+
+
+        <% if (interviews.length === 0) { %>
+
+            <div class="companies-empty">
+
+                <div class="companies-empty-icon">
+                    ◷
+                </div>
+
+                <h2>No interviews yet</h2>
+
+                <p>
+                    Add interview details when you receive an interview invitation.
+                </p>
+
+                <a
+                    href="/internships/<%= internship.id %>/interviews/new"
+                    class="empty-add-btn"
+                >
+                    + Add Interview
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="companies-grid">
+
+                <% interviews.forEach(interview => { %>
+
+                    <div class="company-card">
+
+                        <div class="company-card-top">
+
+                            <div class="company-avatar">
+                                ◷
+                            </div>
+
+                            <div class="company-title">
+
+                                <h2>
+                                    <%= interview.interviewType %>
+                                </h2>
+
+                                <span>
+                                    <%= new Date(interview.interviewDate).toLocaleString() %>
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <% if (interview.interviewer) { %>
+
+                            <div class="company-info">
+                                👤 <%= interview.interviewer %>
+                            </div>
+
+                        <% } %>
+
+
+                        <% if (interview.meetingLink) { %>
+
+                            <div class="company-info">
+
+                                🔗
+
+                                <a
+                                    href="<%= interview.meetingLink %>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Meeting Link
+                                </a>
+
+                            </div>
+
+                        <% } %>
+
+
+                        <% if (interview.result) { %>
+
+                            <div class="company-info">
+                                Result: <strong><%= interview.result %></strong>
+                            </div>
+
+                        <% } %>
+
+
+                        <% if (interview.notes) { %>
+
+                            <p class="company-description">
+                                <%= interview.notes %>
+                            </p>
+
+                        <% } %>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

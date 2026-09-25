@@ -1,0 +1,145 @@
+<%- include("../partials/head", { title: "Add Company | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <div class="form-page-header">
+
+            <div>
+                <p class="form-breadcrumb">
+                    Dashboard / Companies / Add Company
+                </p>
+
+                <h1>Add Company</h1>
+
+                <p>
+                    Add a company to your internship tracker.
+                </p>
+            </div>
+
+            <a href="/companies" class="form-back-btn">
+                ← Back to Companies
+            </a>
+
+        </div>
+
+        <form action="/companies" method="POST" class="internship-form">
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-section-icon">
+                        ◈
+                    </div>
+
+                    <div>
+                        <h2>Company Information</h2>
+                        <p>Enter the basic details about the company.</p>
+                    </div>
+
+                </div>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="name">
+                            Company Name <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="e.g. Microsoft"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">
+                            Industry
+                        </label>
+
+                        <input
+                            type="text"
+                            id="industry"
+                            name="industry"
+                            placeholder="e.g. Software / Technology"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="e.g. Hyderabad, India"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="website">
+                            Website
+                        </label>
+
+                        <input
+                            type="url"
+                            id="website"
+                            name="website"
+                            placeholder="https://example.com"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="6"
+                        placeholder="Write a short description about the company..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+            <div class="form-actions">
+
+                <a
+                    href="/companies"
+                    class="form-cancel-btn"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="form-submit-btn"
+                >
+                    + Add Company
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

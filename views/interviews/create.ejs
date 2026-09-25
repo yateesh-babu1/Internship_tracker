@@ -1,0 +1,228 @@
+<%- include("../partials/head", { title: "Add Interview | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <div class="form-page-header">
+
+            <div>
+
+                <p class="form-breadcrumb">
+                    Dashboard / Interviews / Add Interview
+                </p>
+
+                <h1>Add Interview</h1>
+
+                <p>
+                    Add interview details for
+                    <strong><%= internship.role %></strong>
+                    at
+                    <strong><%= internship.Company.name %></strong>.
+                </p>
+
+            </div>
+
+            <a
+                href="/internships/<%= internship.id %>"
+                class="form-back-btn"
+            >
+                ← Back
+            </a>
+
+        </div>
+
+
+        <form
+            action="/internships/<%= internship.id %>/interviews"
+            method="POST"
+            class="internship-form"
+        >
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-section-icon">
+                        ◷
+                    </div>
+
+                    <div>
+                        <h2>Interview Information</h2>
+
+                        <p>
+                            Enter the details of your interview.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="form-group">
+
+                        <label for="interviewDate">
+                            Interview Date <span>*</span>
+                        </label>
+
+                        <input
+                            type="datetime-local"
+                            id="interviewDate"
+                            name="interviewDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="interviewType">
+                            Interview Type <span>*</span>
+                        </label>
+
+                        <select
+                            id="interviewType"
+                            name="interviewType"
+                            required
+                        >
+
+                            <option value="Online">
+                                Online
+                            </option>
+
+                            <option value="Offline">
+                                Offline
+                            </option>
+
+                            <option value="Phone">
+                                Phone
+                            </option>
+
+                            <option value="Technical">
+                                Technical
+                            </option>
+
+                            <option value="HR">
+                                HR
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="interviewer">
+                            Interviewer
+                        </label>
+
+                        <input
+                            type="text"
+                            id="interviewer"
+                            name="interviewer"
+                            placeholder="e.g. HR Manager"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="meetingLink">
+                            Meeting Link
+                        </label>
+
+                        <input
+                            type="url"
+                            id="meetingLink"
+                            name="meetingLink"
+                            placeholder="https://meet.google.com/..."
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="result">
+                            Result
+                        </label>
+
+                        <select
+                            id="result"
+                            name="result"
+                        >
+
+                            <option value="">
+                                Not decided
+                            </option>
+
+                            <option value="Passed">
+                                Passed
+                            </option>
+
+                            <option value="Selected">
+                                Selected
+                            </option>
+
+                            <option value="Rejected">
+                                Rejected
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        rows="6"
+                        placeholder="Add interview preparation notes, questions, feedback, etc."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <a
+                    href="/internships/<%= internship.id %>"
+                    class="form-cancel-btn"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="form-submit-btn"
+                >
+                    + Save Interview
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

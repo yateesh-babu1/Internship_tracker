@@ -1,0 +1,261 @@
+<%- include("../partials/head", { title: "Create Account | InternTrack" }) %>
+
+<div class="auth-page">
+
+    <!-- LEFT BRANDING -->
+
+    <section class="auth-brand-panel">
+
+        <div class="auth-brand-content">
+
+            <div class="auth-logo-large">
+                IT
+            </div>
+
+            <h1>
+                Start tracking
+                <br>
+                your opportunities.
+            </h1>
+
+            <p>
+                Build a clear picture of your internship search
+                and keep every opportunity organized in one place.
+            </p>
+
+
+            <div class="auth-features">
+
+                <div class="auth-feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        Organize internship applications
+                    </span>
+
+                </div>
+
+
+                <div class="auth-feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        Track interviews and results
+                    </span>
+
+                </div>
+
+
+                <div class="auth-feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        Manage offers and joining dates
+                    </span>
+
+                </div>
+
+
+                <div class="auth-feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        Never lose track of a deadline
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="auth-brand-footer">
+            © 2026 InternTrack · Internship Management Platform
+        </div>
+
+    </section>
+
+
+    <!-- SIGNUP -->
+
+    <section class="auth-form-panel">
+
+        <div class="auth-form-container">
+
+
+            <div class="auth-mobile-brand">
+
+                <div class="auth-mobile-logo">
+                    IT
+                </div>
+
+                <h1>
+                    InternTrack
+                </h1>
+
+                <p>
+                    Internship management platform
+                </p>
+
+            </div>
+
+
+            <div class="auth-heading">
+
+                <h2>
+                    Create your account
+                </h2>
+
+                <p>
+                    Start managing your internship journey today.
+                </p>
+
+            </div>
+
+
+            <%- include("../partials/flash") %>
+
+
+            <form
+                action="/signup"
+                method="POST"
+                class="auth-form"
+            >
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="firstName">
+                            First name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstName"
+                            name="firstName"
+                            placeholder="John"
+                            autocomplete="given-name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="lastName">
+                            Last name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="lastName"
+                            name="lastName"
+                            placeholder="Doe"
+                            autocomplete="family-name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Minimum 6 characters"
+                        minlength="6"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Re-enter your password"
+                        autocomplete="new-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-submit"
+                >
+                    Create InternTrack Account
+                </button>
+
+            </form>
+
+
+            <div class="auth-footer">
+
+                <span>
+                    Already have an account?
+                </span>
+
+                <a href="/login">
+                    Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+<%- include("../partials/footer") %>

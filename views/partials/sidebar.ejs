@@ -1,0 +1,120 @@
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+
+        <div class="sidebar-brand-icon">
+            IT
+        </div>
+
+        <div>
+            <h2>InternTrack</h2>
+            <span>Career Management</span>
+        </div>
+
+    </div>
+
+    <nav class="sidebar-nav">
+
+    <p class="nav-section-title">MAIN</p>
+
+    <% if (currentUser && currentUser.role === "admin") { %>
+
+        <a
+            href="/admin"
+            class="nav-item <%= currentPath === '/admin' ? 'active' : '' %>"
+        >
+            <span class="nav-icon">⌂</span>
+            <span>Admin Dashboard</span>
+        </a>
+
+        <a
+            href="/admin/students"
+            class="nav-item <%= currentPath.startsWith('/admin/students') ? 'active' : '' %>"
+        >
+            <span class="nav-icon">♟</span>
+            <span>Students</span>
+        </a>
+
+        <a
+            href="/admin/applications"
+            class="nav-item <%= currentPath.startsWith('/admin/applications') ? 'active' : '' %>"
+        >
+            <span class="nav-icon">▣</span>
+            <span>Applications</span>
+        </a>
+
+        <a
+            href="/admin/companies"
+            class="nav-item <%= currentPath.startsWith('/admin/companies') ? 'active' : '' %>"
+        >
+            <span class="nav-icon">▦</span>
+            <span>Companies</span>
+        </a>
+
+    <% } else { %>
+
+        <a
+            href="/dashboard"
+            class="nav-item <%= currentPath === '/dashboard' ? 'active' : '' %>"
+        >
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+        <a
+            href="/internships"
+            class="nav-item <%= currentPath.startsWith('/internships') ? 'active' : '' %>"
+        >
+            <span class="nav-icon">▣</span>
+            <span>Internships</span>
+        </a>
+
+        <a
+            href="/companies"
+            class="nav-item <%= currentPath.startsWith('/companies') ? 'active' : '' %>"
+        >
+            <span class="nav-icon">▦</span>
+            <span>Companies</span>
+        </a>
+
+        <a
+            href="/interviews"
+            class="nav-item <%= currentPath.startsWith('/interviews') ? 'active' : '' %>"
+        >
+            <span class="nav-icon">◷</span>
+            <span>Interviews</span>
+        </a>
+
+        <a
+            href="/offers"
+            class="nav-item <%= currentPath.startsWith('/offers') ? 'active' : '' %>"
+        >
+            <span class="nav-icon">✓</span>
+            <span>Offers</span>
+        </a>
+
+    <% } %>
+
+</nav>
+
+    <div class="sidebar-bottom">
+
+        <div class="sidebar-help">
+            <div class="help-icon">?</div>
+
+            <div>
+                <strong>Need help?</strong>
+                <span>Manage your career journey</span>
+            </div>
+        </div>
+
+        <form action="/logout" method="POST" class="logout-form">
+    <button type="submit" class="nav-item logout-item">
+        <span class="nav-icon">↪</span>
+        <span>Logout</span>
+    </button>
+</form>
+
+    </div>
+
+</aside>

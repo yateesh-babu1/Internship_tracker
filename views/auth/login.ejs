@@ -1,0 +1,229 @@
+<%- include("../partials/head", { title: "Student Login | InternTrack" }) %>
+
+<div class="auth-page">
+
+    <!-- LEFT BRANDING PANEL -->
+
+    <section class="auth-brand-panel">
+
+        <div class="auth-brand-content">
+
+            <div class="auth-logo-large">
+                IT
+            </div>
+
+            <h1>
+                Your internship journey,
+                <br>
+                organized.
+            </h1>
+
+            <p>
+                InternTrack helps students manage applications,
+                interviews, offers and deadlines from one
+                professional workspace.
+            </p>
+
+            <div class="auth-features">
+
+                <div class="auth-feature">
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        Track every internship application
+                    </span>
+                </div>
+
+
+                <div class="auth-feature">
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        Stay on top of interview schedules
+                    </span>
+                </div>
+
+
+                <div class="auth-feature">
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        Monitor offers and deadlines
+                    </span>
+                </div>
+
+
+                <div class="auth-feature">
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    <span>
+                        View your complete career progress
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="auth-brand-footer">
+            © 2026 InternTrack · Internship Management Platform
+        </div>
+
+    </section>
+
+
+    <!-- RIGHT LOGIN PANEL -->
+
+    <section class="auth-form-panel">
+
+        <div class="auth-form-container">
+
+
+            <!-- MOBILE BRAND -->
+
+            <div class="auth-mobile-brand">
+
+                <div class="auth-mobile-logo">
+                    IT
+                </div>
+
+                <h1>
+                    InternTrack
+                </h1>
+
+                <p>
+                    Internship management platform
+                </p>
+
+            </div>
+
+
+            <!-- HEADING -->
+
+            <div class="auth-heading">
+
+                <h2>
+                    Student Login
+                </h2>
+
+                <p>
+                    Enter your credentials to access your dashboard.
+                </p>
+
+            </div>
+
+
+            <!-- FLASH MESSAGES -->
+
+            <%- include("../partials/flash") %>
+
+
+            <!-- LOGIN FORM -->
+
+            <form
+                action="/login"
+                method="POST"
+                class="auth-form"
+            >
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <div class="label-row">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <a href="#">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-submit"
+                >
+                    Login to InternTrack
+                </button>
+
+            </form>
+
+
+            <!-- SIGNUP -->
+
+            <div class="auth-footer">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <a href="/signup">
+                    Create an account
+                </a>
+
+            </div>
+
+
+            <!-- ADMIN LOGIN -->
+
+            <div class="admin-login-entry">
+
+                <span>
+                    Administrator?
+                </span>
+
+                <a href="/admin/login">
+                    Admin Login
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<%- include("../partials/footer") %>

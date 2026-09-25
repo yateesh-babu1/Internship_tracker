@@ -1,0 +1,296 @@
+<%- include("../partials/head", { title: "Student Details | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <!-- Header -->
+
+        <div class="admin-header">
+
+            <div>
+
+                <p class="admin-breadcrumb">
+                    InternTrack / Administration / Students
+                </p>
+
+                <h1>
+                    Student Details
+                </h1>
+
+                <p>
+                    View the student's internship applications.
+                </p>
+
+            </div>
+
+            <div class="admin-badge">
+                🛡️ Administrator
+            </div>
+
+        </div>
+
+
+        <!-- Student Information -->
+
+        <div class="admin-panel">
+
+            <div class="admin-panel-header">
+
+                <div class="student-cell">
+
+                    <div class="student-avatar">
+
+                        <%= student.firstName
+                            .charAt(0)
+                            .toUpperCase() %>
+
+                    </div>
+
+                    <div>
+
+                        <h2>
+
+                            <%= student.firstName %>
+                            <%= student.lastName %>
+
+                        </h2>
+
+                        <p>
+                            <%= student.email %>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Student Information -->
+
+            <div class="admin-stats-grid">
+
+                <div class="admin-stat-card">
+
+                    <span>
+                        Applications
+                    </span>
+
+                    <strong>
+                        <%= student.Internships.length %>
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span>
+                        Accepted
+                    </span>
+
+                    <strong>
+
+                        <%= student.Internships.filter(
+                            internship =>
+                            internship.status === "Accepted"
+                        ).length %>
+
+                    </strong>
+
+                </div>
+
+
+                <div class="admin-stat-card">
+
+                    <span>
+                        Joined
+                    </span>
+
+                    <strong>
+
+                        <%= new Date(
+                            student.createdAt
+                        ).toLocaleDateString() %>
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Applications -->
+
+        <div class="admin-panel">
+
+            <div class="admin-panel-header">
+
+                <div>
+
+                    <h2>
+                        Internship Applications
+                    </h2>
+
+                </div>
+
+                <a
+                    href="/admin/students"
+                    class="company-apply-btn"
+                >
+                    ← Back to Students
+                </a>
+
+            </div>
+
+
+            <% if (student.Internships.length === 0) { %>
+
+                <div class="admin-empty-state">
+
+                    <div>📋</div>
+
+                    <h3>
+                        No applications
+                    </h3>
+
+                    <p>
+                        This student has not added any internship applications.
+                    </p>
+
+                </div>
+
+            <% } else { %>
+
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Company
+                                </th>
+
+                                <th>
+                                    Role
+                                </th>
+
+                                <th>
+                                    Application Date
+                                </th>
+
+                                <th>
+                                    Deadline
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <% student.Internships.forEach(internship => { %>
+
+                                <tr>
+
+                                    <!-- Company -->
+
+                                    <td>
+
+                                        <strong>
+
+                                            <%= internship.Company
+                                                ? internship.Company.name
+                                                : "Unknown" %>
+
+                                        </strong>
+
+                                    </td>
+
+
+                                    <!-- Role -->
+
+                                    <td>
+
+                                        <%= internship.role %>
+
+                                    </td>
+
+
+                                    <!-- Application Date -->
+
+                                    <td>
+
+                                        <%= new Date(
+                                            internship.applicationDate
+                                        ).toLocaleDateString() %>
+
+                                    </td>
+
+
+                                    <!-- Deadline -->
+
+                                    <td>
+
+                                        <% if (internship.deadline) { %>
+
+                                            <%= new Date(
+                                                internship.deadline
+                                            ).toLocaleDateString() %>
+
+                                        <% } else { %>
+
+                                            —
+
+                                        <% } %>
+
+                                    </td>
+
+
+                                    <!-- Status -->
+
+                                    <td>
+
+                                        <span class="admin-status-badge">
+
+                                            <%= internship.status %>
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

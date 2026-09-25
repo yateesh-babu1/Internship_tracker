@@ -1,0 +1,367 @@
+<%- include("../partials/head", { title: "My Internships | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <!-- Page Header -->
+        <div class="companies-header">
+
+            <div>
+                <p class="companies-breadcrumb">
+                    Dashboard / Internships
+                </p>
+
+                <h1>My Internships</h1>
+
+                <p>
+                    Track and manage all your internship applications in one place.
+                </p>
+            </div>
+
+            <a href="/internships/new" class="add-company-btn">
+                + Add Internship
+            </a>
+
+        </div>
+
+
+        <!-- Search & Filters -->
+        <form
+            action="/internships"
+            method="GET"
+            class="internship-filters"
+        >
+
+            <!-- Search -->
+            <div class="filter-search">
+
+                <input
+                    type="text"
+                    name="search"
+                    placeholder="Search role or location..."
+                    value="<%= filters?.search || '' %>"
+                >
+
+            </div>
+
+
+            <!-- Status -->
+            <div class="filter-field">
+
+                <select name="status">
+
+                    <option value="">
+                        All Statuses
+                    </option>
+
+                    <option
+                        value="Applied"
+                        <%= filters?.status === "Applied" ? "selected" : "" %>
+                    >
+                        Applied
+                    </option>
+
+                    <option
+                        value="Shortlisted"
+                        <%= filters?.status === "Shortlisted" ? "selected" : "" %>
+                    >
+                        Shortlisted
+                    </option>
+
+                    <option
+                        value="Interview Scheduled"
+                        <%= filters?.status === "Interview Scheduled" ? "selected" : "" %>
+                    >
+                        Interview Scheduled
+                    </option>
+
+                    <option
+                        value="Interview Completed"
+                        <%= filters?.status === "Interview Completed" ? "selected" : "" %>
+                    >
+                        Interview Completed
+                    </option>
+
+                    <option
+                        value="Offer Received"
+                        <%= filters?.status === "Offer Received" ? "selected" : "" %>
+                    >
+                        Offer Received
+                    </option>
+
+                    <option
+                        value="Accepted"
+                        <%= filters?.status === "Accepted" ? "selected" : "" %>
+                    >
+                        Accepted
+                    </option>
+
+                    <option
+                        value="Rejected"
+                        <%= filters?.status === "Rejected" ? "selected" : "" %>
+                    >
+                        Rejected
+                    </option>
+
+                    <option
+                        value="Withdrawn"
+                        <%= filters?.status === "Withdrawn" ? "selected" : "" %>
+                    >
+                        Withdrawn
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Work Type -->
+            <div class="filter-field">
+
+                <select name="workType">
+
+                    <option value="">
+                        All Work Types
+                    </option>
+
+                    <option
+                        value="On-site"
+                        <%= filters?.workType === "On-site" ? "selected" : "" %>
+                    >
+                        On-site
+                    </option>
+
+                    <option
+                        value="Remote"
+                        <%= filters?.workType === "Remote" ? "selected" : "" %>
+                    >
+                        Remote
+                    </option>
+
+                    <option
+                        value="Hybrid"
+                        <%= filters?.workType === "Hybrid" ? "selected" : "" %>
+                    >
+                        Hybrid
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Sort -->
+            <div class="filter-field">
+
+                <select name="sort">
+
+                    <option
+                        value="newest"
+                        <%= filters?.sort === "newest" ? "selected" : "" %>
+                    >
+                        Newest First
+                    </option>
+
+                    <option
+                        value="oldest"
+                        <%= filters?.sort === "oldest" ? "selected" : "" %>
+                    >
+                        Oldest First
+                    </option>
+
+                    <option
+                        value="deadline"
+                        <%= filters?.sort === "deadline" ? "selected" : "" %>
+                    >
+                        Deadline
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Search Button -->
+            <button
+                type="submit"
+                class="filter-btn"
+            >
+                🔍 Search
+            </button>
+
+
+            <!-- Clear -->
+            <a
+                href="/internships"
+                class="clear-filter-btn"
+            >
+                Clear
+            </a>
+
+        </form>
+
+
+        <!-- Summary -->
+        <div class="company-summary-card">
+
+            <div class="company-summary-icon">
+                ◫
+            </div>
+
+            <div>
+
+                <span>
+                    Total Applications
+                </span>
+
+                <strong>
+                    <%= internships.length %>
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- Empty State -->
+        <% if (internships.length === 0) { %>
+
+            <div class="companies-empty">
+
+                <div class="companies-empty-icon">
+                    ◫
+                </div>
+
+                <h2>
+                    No internship applications yet
+                </h2>
+
+                <p>
+                    Start tracking your internship applications by adding your first one.
+                </p>
+
+                <a
+                    href="/internships/new"
+                    class="empty-add-btn"
+                >
+                    + Add Your First Internship
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+
+            <!-- Internship Cards -->
+            <div class="companies-grid">
+
+                <% internships.forEach(internship => { %>
+
+                    <div class="company-card">
+
+                        <!-- Top -->
+                        <div class="company-card-top">
+
+                            <div class="company-avatar">
+                                <%= internship.Company.name.charAt(0).toUpperCase() %>
+                            </div>
+
+                            <div class="company-title">
+
+                                <h2>
+                                    <%= internship.role %>
+                                </h2>
+
+                                <span>
+                                    <%= internship.Company.name %>
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Location -->
+                        <% if (internship.location) { %>
+
+                            <div class="company-info">
+                                📍 <%= internship.location %>
+                            </div>
+
+                        <% } %>
+
+
+                        <!-- Work Type -->
+                        <div class="company-info">
+                            💼 <%= internship.workType %>
+                        </div>
+
+
+                        <!-- Application Date -->
+                        <div class="company-info">
+
+                            📅 Applied:
+                            <%= internship.applicationDate %>
+
+                        </div>
+
+
+                        <!-- Deadline -->
+                        <% if (internship.deadline) { %>
+
+                            <div class="company-info">
+
+                                ⏰ Deadline:
+                                <%= internship.deadline %>
+
+                            </div>
+
+                        <% } %>
+
+
+                        <!-- Status -->
+                        <div class="company-info">
+
+                            Status:
+
+                            <strong>
+                                <%= internship.status %>
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Footer -->
+                        <div class="company-card-footer">
+
+                            <span>
+                                Internship
+                            </span>
+
+                            <a
+                                href="/internships/<%= internship.id %>"
+                                class="company-apply-btn"
+                            >
+                                View Details →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

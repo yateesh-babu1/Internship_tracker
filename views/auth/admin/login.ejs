@@ -1,0 +1,164 @@
+<%- include("../../partials/head", { title: "Admin Login | InternTrack" }) %>
+
+<div class="admin-login-page">
+
+    <div class="admin-login-container">
+
+        <!-- LEFT BRANDING -->
+        <div class="admin-login-brand">
+
+            <div class="admin-brand-icon">
+                IT
+            </div>
+
+            <p class="admin-brand-label">
+                INTERNTRACK
+            </p>
+
+            <h1>
+                Admin<br>
+                Control Center
+            </h1>
+
+            <p class="admin-brand-description">
+                Securely manage students, internship applications,
+                companies and career activity from one central platform.
+            </p>
+
+            <div class="admin-security-list">
+
+                <div>
+                    <span>✓</span>
+                    Secure administrator access
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Student management
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Internship analytics
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    System-wide reports
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT LOGIN FORM -->
+        <div class="admin-login-form-area">
+
+            <div class="admin-login-form-box">
+
+                <div class="admin-login-icon">
+                    🛡️
+                </div>
+
+                <p class="admin-form-label">
+                    ADMINISTRATOR ACCESS
+                </p>
+
+                <h2>
+                    Welcome back
+                </h2>
+
+                <p class="admin-form-description">
+                    Sign in to access the InternTrack administration panel.
+                </p>
+
+
+                <!-- FLASH MESSAGES -->
+                <%- include("../../partials/flash") %>
+
+
+                <!-- ADMIN LOGIN FORM -->
+                <form
+                    action="/admin/login"
+                    method="POST"
+                    class="admin-login-form"
+                >
+
+                    <div class="admin-input-group">
+
+                        <label for="email">
+                            Admin Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="admin@example.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="admin-input-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="admin-login-button"
+                    >
+                        Sign in to Admin Panel
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <!-- DIVIDER -->
+                <div class="admin-login-divider">
+                    <span>or</span>
+                </div>
+
+
+                <!-- STUDENT LOGIN -->
+                <a
+                    href="/login"
+                    class="student-login-link"
+                >
+                    ← Back to Student Login
+                </a>
+
+
+                <!-- SECURITY MESSAGE -->
+                <p class="admin-security-note">
+                    🔒 Authorized administrators only
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<%- include("../../partials/footer") %>

@@ -1,0 +1,615 @@
+<%- include("../partials/head", { title: "Admin Dashboard | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <!-- Header -->
+        <div class="admin-header">
+
+            <div>
+
+                <p class="admin-breadcrumb">
+                    InternTrack / Administration
+                </p>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    Monitor internship activity, students, companies and applications.
+                </p>
+
+            </div>
+
+            <div class="admin-badge">
+                🛡️ Administrator
+            </div>
+
+        </div>
+
+
+        <!-- Main Statistics -->
+        <div class="admin-stats-grid">
+
+            <!-- Students -->
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon purple">
+                    👨‍🎓
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Students
+                    </span>
+
+                    <strong>
+                        <%= totalStudents %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Applications -->
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon blue">
+                    📋
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Applications
+                    </span>
+
+                    <strong>
+                        <%= totalApplications %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Companies -->
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon green">
+                    🏢
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Companies
+                    </span>
+
+                    <strong>
+                        <%= totalCompanies %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Interviews -->
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon orange">
+                    🎤
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Interviews
+                    </span>
+
+                    <strong>
+                        <%= totalInterviews %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- Offers -->
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon pink">
+                    🎯
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Offers
+                    </span>
+
+                    <strong>
+                        <%= totalOffers %>
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Application Status + Management -->
+        <div class="admin-section-grid">
+
+
+            <!-- Application Status -->
+            <div class="admin-panel">
+
+                <div class="admin-panel-header">
+
+                    <div>
+
+                        <h2>
+                            Application Status
+                        </h2>
+
+                        <p>
+                            System-wide internship application breakdown.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-list">
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot applied"></i>
+
+                            Applied
+
+                        </span>
+
+                        <strong>
+                            <%= applied %>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot shortlisted"></i>
+
+                            Shortlisted
+
+                        </span>
+
+                        <strong>
+                            <%= shortlisted %>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot interview"></i>
+
+                            Interview Scheduled
+
+                        </span>
+
+                        <strong>
+                            <%= interviewScheduled %>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot completed"></i>
+
+                            Interview Completed
+
+                        </span>
+
+                        <strong>
+                            <%= interviewCompleted %>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot offer"></i>
+
+                            Offer Received
+
+                        </span>
+
+                        <strong>
+                            <%= offerReceived %>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot accepted"></i>
+
+                            Accepted
+
+                        </span>
+
+                        <strong>
+                            <%= accepted %>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot rejected"></i>
+
+                            Rejected
+
+                        </span>
+
+                        <strong>
+                            <%= rejected %>
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-row">
+
+                        <span>
+
+                            <i class="status-dot withdrawn"></i>
+
+                            Withdrawn
+
+                        </span>
+
+                        <strong>
+                            <%= withdrawn %>
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quick Management -->
+            <div class="admin-panel">
+
+                <div class="admin-panel-header">
+
+                    <div>
+
+                        <h2>
+                            Management
+                        </h2>
+
+                        <p>
+                            Quick access to administration tools.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-management-grid">
+
+
+                    <a
+                        href="/admin/students"
+                        class="admin-management-card"
+                    >
+
+                        <div class="management-icon">
+                            👨‍🎓
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Students
+                            </strong>
+
+                            <span>
+                                View registered students
+                            </span>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </a>
+
+
+                    <a href="/admin/applications" class="admin-management-card">
+                    >
+
+                        <div class="management-icon">
+                            📋
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Applications
+                            </strong>
+
+                            <span>
+                                View internship applications
+                            </span>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </a>
+
+
+                    <a href="/admin/companies" class="admin-management-card">
+                    >
+
+                        <div class="management-icon">
+                            🏢
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Companies
+                            </strong>
+
+                            <span>
+                                View registered companies
+                            </span>
+
+                        </div>
+
+                        <b>
+                            →
+                        </b>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Recent Applications -->
+        <div class="admin-panel recent-applications-panel">
+
+            <div class="admin-panel-header">
+
+                <div>
+
+                    <h2>
+                        Recent Applications
+                    </h2>
+
+                    <p>
+                        Latest internship applications submitted by students.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <% if (recentApplications.length === 0) { %>
+
+                <!-- Empty State -->
+
+                <div class="admin-empty-state">
+
+                    <div>
+                        📋
+                    </div>
+
+                    <h3>
+                        No applications yet
+                    </h3>
+
+                    <p>
+                        Student internship applications will appear here.
+                    </p>
+
+                </div>
+
+            <% } else { %>
+
+
+                <!-- Applications Table -->
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Student
+                                </th>
+
+                                <th>
+                                    Company
+                                </th>
+
+                                <th>
+                                    Role
+                                </th>
+
+                                <th>
+                                    Application Date
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <% recentApplications.forEach(application => { %>
+
+                                <tr>
+
+
+                                    <!-- Student -->
+
+                                    <td>
+
+                                        <div class="student-cell">
+
+                                            <div class="student-avatar">
+
+                                                <%= application.User.firstName
+                                                    .charAt(0)
+                                                    .toUpperCase() %>
+
+                                            </div>
+
+
+                                            <div>
+
+                                                <strong>
+
+                                                    <%= application.User.firstName %>
+
+                                                    <%= application.User.lastName %>
+
+                                                </strong>
+
+                                                <span>
+
+                                                    <%= application.User.email %>
+
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Company -->
+
+                                    <td>
+
+                                        <strong>
+
+                                            <%= application.Company.name %>
+
+                                        </strong>
+
+                                    </td>
+
+
+                                    <!-- Role -->
+
+                                    <td>
+
+                                        <%= application.role %>
+
+                                    </td>
+
+
+                                    <!-- Application Date -->
+
+                                    <td>
+
+                                        <%= application.applicationDate %>
+
+                                    </td>
+
+
+                                    <!-- Status -->
+
+                                    <td>
+
+                                        <span class="admin-status-badge">
+
+                                            <%= application.status %>
+
+                                        </span>
+
+                                    </td>
+
+
+                                </tr>
+
+                            <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<%- include("../partials/footer") %>

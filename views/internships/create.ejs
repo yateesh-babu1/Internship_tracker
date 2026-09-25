@@ -1,0 +1,376 @@
+<%- include("../partials/head", { title: "Add Internship | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <div class="form-page-header">
+
+            <div>
+                <p class="form-breadcrumb">
+                    Dashboard / Internships / Add Internship
+                </p>
+
+                <h1>Add Internship</h1>
+
+                <p>
+                    Add a new internship application to your tracker.
+                </p>
+            </div>
+
+            <a href="/internships" class="form-back-btn">
+                ← Back to Internships
+            </a>
+
+        </div>
+
+
+        <form
+            action="/internships"
+            method="POST"
+            class="internship-form"
+        >
+
+            <!-- BASIC INFORMATION -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-section-icon">
+                        ◈
+                    </div>
+
+                    <div>
+                        <h2>Internship Information</h2>
+
+                        <p>
+                            Enter the basic details about the internship.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- COMPANY -->
+
+                    <div class="form-group">
+
+                        <label for="companyId">
+                            Company <span>*</span>
+                        </label>
+
+                        <select
+                            id="companyId"
+                            name="companyId"
+                            required
+                        >
+
+                            <option value="">
+                                Select a company
+                            </option>
+
+                            <% companies.forEach(company => { %>
+
+                                <option value="<%= company.id %>">
+                                    <%= company.name %>
+                                </option>
+
+                            <% }) %>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ROLE -->
+
+                    <div class="form-group">
+
+                        <label for="role">
+                            Role / Position <span>*</span>
+                        </label>
+
+                        <input
+                            type="text"
+                            id="role"
+                            name="role"
+                            placeholder="Software Developer Intern"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            Location
+                        </label>
+
+                        <input
+                            type="text"
+                            id="location"
+                            name="location"
+                            placeholder="Hyderabad, Telangana"
+                        >
+
+                    </div>
+
+
+                    <!-- WORK TYPE -->
+
+                    <div class="form-group">
+
+                        <label for="workType">
+                            Work Type <span>*</span>
+                        </label>
+
+                        <select
+                            id="workType"
+                            name="workType"
+                            required
+                        >
+
+                            <option value="On-site">
+                                On-site
+                            </option>
+
+                            <option value="Remote">
+                                Remote
+                            </option>
+
+                            <option value="Hybrid">
+                                Hybrid
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- APPLICATION DETAILS -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-section-icon">
+                        ◷
+                    </div>
+
+                    <div>
+                        <h2>Application Details</h2>
+
+                        <p>
+                            Track dates, status and compensation.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <!-- APPLICATION DATE -->
+
+                    <div class="form-group">
+
+                        <label for="applicationDate">
+                            Application Date <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="applicationDate"
+                            name="applicationDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DEADLINE -->
+
+                    <div class="form-group">
+
+                        <label for="deadline">
+                            Application Deadline
+                        </label>
+
+                        <input
+                            type="date"
+                            id="deadline"
+                            name="deadline"
+                        >
+
+                    </div>
+
+
+                    <!-- STATUS -->
+
+                    <div class="form-group">
+
+                        <label for="status">
+                            Status <span>*</span>
+                        </label>
+
+                        <select
+                            id="status"
+                            name="status"
+                            required
+                        >
+
+                            <option value="Applied">
+                                Applied
+                            </option>
+
+                            <option value="Shortlisted">
+                                Shortlisted
+                            </option>
+
+                            <option value="Interview Scheduled">
+                                Interview Scheduled
+                            </option>
+
+                            <option value="Interview Completed">
+                                Interview Completed
+                            </option>
+
+                            <option value="Offer Received">
+                                Offer Received
+                            </option>
+
+                            <option value="Accepted">
+                                Accepted
+                            </option>
+
+                            <option value="Rejected">
+                                Rejected
+                            </option>
+
+                            <option value="Withdrawn">
+                                Withdrawn
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- SALARY -->
+
+                    <div class="form-group">
+
+                        <label for="salary">
+                            Salary / Stipend
+                        </label>
+
+                        <input
+                            type="text"
+                            id="salary"
+                            name="salary"
+                            placeholder="₹25,000 / month"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ADDITIONAL INFORMATION -->
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-section-icon">
+                        ◇
+                    </div>
+
+                    <div>
+                        <h2>Additional Information</h2>
+
+                        <p>
+                            Save the application link and useful notes.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="jobUrl">
+                        Job / Application URL
+                    </label>
+
+                    <input
+                        type="url"
+                        id="jobUrl"
+                        name="jobUrl"
+                        placeholder="https://example.com/internship"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        rows="6"
+                        placeholder="Add any useful information about this internship..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="form-actions">
+
+                <a
+                    href="/internships"
+                    class="form-cancel-btn"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="form-submit-btn"
+                >
+                    + Add Internship
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

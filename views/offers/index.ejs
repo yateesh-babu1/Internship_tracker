@@ -1,0 +1,131 @@
+<%- include("../partials/head", { title: "Offers | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <div class="form-page-header">
+
+            <div>
+                <p class="form-breadcrumb">
+                    Dashboard / Internship / Offers
+                </p>
+
+                <h1>Offers</h1>
+
+                <p>
+                    Manage offers for
+                    <strong><%= internship.role %></strong>
+                    at
+                    <strong><%= internship.Company.name %></strong>.
+                </p>
+            </div>
+
+            <a
+                href="/internships/<%= internship.id %>/offers/new"
+                class="form-submit-btn"
+            >
+                + Add Offer
+            </a>
+
+        </div>
+
+
+        <% if (offers.length === 0) { %>
+
+            <div class="companies-empty">
+
+                <div class="companies-empty-icon">
+                    ✓
+                </div>
+
+                <h2>No offers yet</h2>
+
+                <p>
+                    Add offer details when you receive an internship offer.
+                </p>
+
+                <a
+                    href="/internships/<%= internship.id %>/offers/new"
+                    class="empty-add-btn"
+                >
+                    + Add Offer
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="companies-grid">
+
+                <% offers.forEach(offer => { %>
+
+                    <div class="company-card">
+
+                        <div class="company-card-top">
+
+                            <div class="company-avatar">
+                                ✓
+                            </div>
+
+                            <div class="company-title">
+
+                                <h2>
+                                    ₹ <%= offer.salary || "Not specified" %>
+                                </h2>
+
+                                <span>
+                                    <%= offer.offerStatus %>
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="company-info">
+                            📅 Offer Date:
+                            <%= offer.offerDate %>
+                        </div>
+
+
+                        <% if (offer.joiningDate) { %>
+
+                            <div class="company-info">
+                                🚀 Joining Date:
+                                <%= offer.joiningDate %>
+                            </div>
+
+                        <% } %>
+
+
+                        <div class="company-info">
+                            📌 Status:
+                            <strong><%= offer.offerStatus %></strong>
+                        </div>
+
+
+                        <% if (offer.notes) { %>
+
+                            <p class="company-description">
+                                <%= offer.notes %>
+                            </p>
+
+                        <% } %>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

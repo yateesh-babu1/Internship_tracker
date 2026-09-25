@@ -1,0 +1,644 @@
+<%- include("partials/head", { title: "Dashboard | InternTrack" }) %>
+
+<%- include("partials/navbar") %>
+
+<%- include("partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content dashboard-page">
+
+        <!-- DASHBOARD HEADER -->
+        <section class="dashboard-welcome">
+
+            <div class="welcome-content">
+
+                <div class="welcome-label">
+                    <span class="welcome-dot"></span>
+                    INTERNSHIP TRACKER
+                </div>
+
+                <h1>
+                    Welcome back,
+                    <span>
+                        <%= currentUser && currentUser.firstName
+                            ? currentUser.firstName
+                            : "Student" %>
+                    </span>
+                    👋
+                </h1>
+
+                <p>
+                    Keep your internship applications, interviews,
+                    offers and deadlines organized in one place.
+                </p>
+
+            </div>
+
+            <a
+                href="/internships/new"
+                class="dashboard-primary-btn"
+            >
+                <span class="btn-plus">+</span>
+                Add Internship
+            </a>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid dashboard-stats">
+
+            <!-- TOTAL APPLICATIONS -->
+            <article class="stat-card stat-purple">
+
+                <div class="stat-card-header">
+
+                    <div>
+                        <p class="stat-title">
+                            Total Applications
+                        </p>
+
+                        <h2 class="stat-number">
+                            <%= totalApplications %>
+                        </h2>
+                    </div>
+
+                    <div class="stat-icon">
+                        ▣
+                    </div>
+
+                </div>
+
+                <div class="stat-footer">
+                    <span class="stat-trend">
+                        —
+                    </span>
+
+                    <span>
+                        Internship applications
+                    </span>
+                </div>
+
+            </article>
+
+
+            <!-- IN PROGRESS -->
+            <article class="stat-card stat-blue">
+
+                <div class="stat-card-header">
+
+                    <div>
+                        <p class="stat-title">
+                            In Progress
+                        </p>
+
+                        <h2 class="stat-number">
+                            <%= inProgress %>
+                        </h2>
+                    </div>
+
+                    <div class="stat-icon">
+                        ◷
+                    </div>
+
+                </div>
+
+                <div class="stat-footer">
+                    <span class="stat-trend">
+                        —
+                    </span>
+
+                    <span>
+                        Active applications
+                    </span>
+                </div>
+
+            </article>
+
+
+            <!-- INTERVIEWS -->
+            <article class="stat-card stat-orange">
+
+                <div class="stat-card-header">
+
+                    <div>
+                        <p class="stat-title">
+                            Interviews
+                        </p>
+
+                        <h2 class="stat-number">
+                             <%= interviews %>
+                        </h2>
+                    </div>
+
+                    <div class="stat-icon">
+                        ◎
+                    </div>
+
+                </div>
+
+                <div class="stat-footer">
+                    <span class="stat-trend">
+                        —
+                    </span>
+
+                    <span>
+                        Scheduled interviews
+                    </span>
+                </div>
+
+            </article>
+
+
+            <!-- OFFERS -->
+            <article class="stat-card stat-green">
+
+                <div class="stat-card-header">
+
+                    <div>
+                        <p class="stat-title">
+                            Offers
+                        </p>
+
+                        <h2 class="stat-number">
+                             <%= offers %>
+                        </h2>
+                    </div>
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                </div>
+
+                <div class="stat-footer">
+                    <span class="stat-trend">
+                        —
+                    </span>
+
+                    <span>
+                        Offers received
+                    </span>
+                </div>
+
+            </article>
+
+
+            <!-- ACCEPTED -->
+            <article class="stat-card stat-cyan">
+
+                <div class="stat-card-header">
+
+                    <div>
+                        <p class="stat-title">
+                            Accepted
+                        </p>
+
+                        <h2 class="stat-number">
+                            <%= accepted %>
+                        </h2>
+                    </div>
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                </div>
+
+                <div class="stat-footer">
+                    <span class="stat-trend">
+                        —
+                    </span>
+
+                    <span>
+                        Accepted internships
+                    </span>
+                </div>
+
+            </article>
+
+
+            <!-- REJECTED -->
+            <article class="stat-card stat-red">
+
+                <div class="stat-card-header">
+
+                    <div>
+                        <p class="stat-title">
+                            Rejected
+                        </p>
+
+                        <h2 class="stat-number">
+                            <%= rejected %>
+                        </h2>
+                    </div>
+
+                    <div class="stat-icon">
+                        ×
+                    </div>
+
+                </div>
+
+                <div class="stat-footer">
+                    <span class="stat-trend">
+                        —
+                    </span>
+
+                    <span>
+                        Rejected applications
+                    </span>
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- ANALYTICS ROW -->
+        <section class="analytics-grid">
+
+            <!-- APPLICATION OVERVIEW -->
+            <article class="dashboard-card analytics-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>
+                            Application Overview
+                        </h2>
+
+                        <p class="card-subtitle">
+                            Your application status at a glance
+                        </p>
+                    </div>
+
+                    <span class="period-badge">
+                        All time
+                    </span>
+
+                </div>
+
+
+                <div class="chart-area">
+
+                    <div class="chart-bars">
+
+                        <div class="chart-column">
+                            <div
+                                class="chart-bar bar-applied"
+                                style="height: 8px;"
+                            ></div>
+
+                            <span>
+                                Applied
+                            </span>
+                        </div>
+
+
+                        <div class="chart-column">
+                            <div
+                                class="chart-bar bar-shortlisted"
+                                style="height: 8px;"
+                            ></div>
+
+                            <span>
+                                Shortlisted
+                            </span>
+                        </div>
+
+
+                        <div class="chart-column">
+                            <div
+                                class="chart-bar bar-interview"
+                                style="height: 8px;"
+                            ></div>
+
+                            <span>
+                                Interview
+                            </span>
+                        </div>
+
+
+                        <div class="chart-column">
+                            <div
+                                class="chart-bar bar-offer"
+                                style="height: 8px;"
+                            ></div>
+
+                            <span>
+                                Offer
+                            </span>
+                        </div>
+
+
+                        <div class="chart-column">
+                            <div
+                                class="chart-bar bar-accepted"
+                                style="height: 8px;"
+                            ></div>
+
+                            <span>
+                                Accepted
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-empty">
+
+                        <div class="chart-empty-icon">
+                            ◌
+                        </div>
+
+                        <strong>
+                            No application data yet
+                        </strong>
+
+                        <span>
+                            Add internships to see your application analytics.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- UPCOMING DEADLINES -->
+            <article class="dashboard-card deadlines-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>
+                            Upcoming Deadlines
+                        </h2>
+
+                        <p class="card-subtitle">
+                            Stay ahead of your applications
+                        </p>
+                    </div>
+
+                    <span class="deadline-icon">
+                        ◷
+                    </span>
+
+                </div>
+
+
+                <div class="deadline-empty">
+
+                    <div class="deadline-empty-icon">
+                        ◷
+                    </div>
+
+                    <h3>
+                        No upcoming deadlines
+                    </h3>
+
+                    <p>
+                        Your internship deadlines will appear here
+                        when you add applications.
+                    </p>
+
+                    <a
+                        href="/internships/new"
+                        class="secondary-btn"
+                    >
+                        Add an application
+                    </a>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- RECENT APPLICATIONS -->
+        <section class="dashboard-card recent-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>
+                        Recent Applications
+                    </h2>
+
+                    <p class="card-subtitle">
+                        Your latest internship activity
+                    </p>
+                </div>
+
+                <a
+                    href="/internships"
+                    class="view-all-link"
+                >
+                    View all
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+            <!-- TABLE HEADER -->
+
+            <div class="application-table">
+
+    <div class="application-table-header">
+
+        <span>COMPANY</span>
+
+        <span>ROLE</span>
+
+        <span>APPLICATION DATE</span>
+
+        <span>DEADLINE</span>
+
+        <span>STATUS</span>
+
+        <span>ACTION</span>
+
+    </div>
+
+
+    <% if (recentApplications && recentApplications.length > 0) { %>
+
+        <% recentApplications.forEach(application => { %>
+
+            <div class="application-row">
+
+                <!-- COMPANY -->
+
+                <div class="company-cell">
+
+                    <div class="company-avatar">
+                        <%= application.Company
+                            ? application.Company.name.charAt(0).toUpperCase()
+                            : "C" %>
+                    </div>
+
+                    <div class="company-info">
+
+                        <strong>
+                            <%= application.Company
+                                ? application.Company.name
+                                : "Unknown Company" %>
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ROLE -->
+
+                <div class="role-cell">
+
+                    <%= application.role %>
+
+                </div>
+
+
+                <!-- APPLICATION DATE -->
+
+                <div class="date-cell">
+
+                    <%= application.applicationDate
+                        ? new Date(application.applicationDate)
+                            .toLocaleDateString("en-IN", {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric"
+                            })
+                        : "—" %>
+
+                </div>
+
+
+                <!-- DEADLINE -->
+
+                <div class="date-cell">
+
+                    <%= application.deadline
+                        ? new Date(application.deadline)
+                            .toLocaleDateString("en-IN", {
+                                day: "2-digit",
+                                month: "short",
+                                year: "numeric"
+                            })
+                        : "—" %>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div>
+
+                    <span class="status-badge status-<%= application.status
+                        .toLowerCase()
+                        .replaceAll(" ", "-") %>">
+
+                        <%= application.status %>
+
+                    </span>
+
+                </div>
+
+
+                <!-- ACTION -->
+
+                <div>
+
+                    <a
+                        href="/internships/<%= application.id %>"
+                        class="table-action"
+                    >
+                        View
+                    </a>
+
+                </div>
+
+            </div>
+
+        <% }) %>
+
+
+    <% } else { %>
+
+
+        <!-- EMPTY STATE -->
+
+        <div class="application-empty">
+
+            <div class="empty-state-icon">
+                ▣
+            </div>
+
+            <h3>
+                No applications yet
+            </h3>
+
+            <p>
+                Start tracking your internship journey
+                by adding your first application.
+            </p>
+
+            <a
+                href="/internships/new"
+                class="dashboard-primary-btn"
+            >
+                <span class="btn-plus">+</span>
+                Add Internship
+            </a>
+
+        </div>
+
+
+    <% } %>
+
+</div>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+        <section class="quick-actions">
+
+            <div class="quick-action-content">
+
+                <div class="quick-action-icon">
+                    ✦
+                </div>
+
+                <div>
+                    <h3>
+                        Build your internship pipeline
+                    </h3>
+
+                    <p>
+                        Add your applications and keep every opportunity
+                        organized from application to offer.
+                    </p>
+                </div>
+
+            </div>
+
+            <a
+                href="/internships/new"
+                class="secondary-btn"
+            >
+                Get started →
+            </a>
+
+        </section>
+
+    </div>
+
+</main>
+
+<%- include("partials/footer") %>

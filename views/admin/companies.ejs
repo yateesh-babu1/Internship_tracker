@@ -1,0 +1,199 @@
+<%- include("../partials/head", { title: "Companies | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <!-- Header -->
+
+        <div class="admin-header">
+
+            <div>
+
+                <p class="admin-breadcrumb">
+                    InternTrack / Administration / Companies
+                </p>
+
+                <h1>Companies</h1>
+
+                <p>
+                    View companies associated with internship applications.
+                </p>
+
+            </div>
+
+            <div class="admin-badge">
+                🛡️ Administrator
+            </div>
+
+        </div>
+
+
+        <!-- Companies Panel -->
+
+        <div class="admin-panel">
+
+            <div class="admin-panel-header">
+
+                <div>
+
+                    <h2>All Companies</h2>
+
+                    <p>
+                        Total companies:
+                        <strong>
+                            <%= companies.length %>
+                        </strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <% if (companies.length === 0) { %>
+
+                <div class="admin-empty-state">
+
+                    <div>🏢</div>
+
+                    <h3>No companies found</h3>
+
+                    <p>
+                        Companies will appear here when students add applications.
+                    </p>
+
+                </div>
+
+            <% } else { %>
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Company</th>
+
+                                <th>Industry</th>
+
+                                <th>Location</th>
+
+                                <th>Applications</th>
+
+                                <th>Website</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <% companies.forEach(company => { %>
+
+                                <tr>
+
+                                    <!-- Company -->
+
+                                    <td>
+
+                                        <div class="student-cell">
+
+                                            <div class="student-avatar">
+                                                🏢
+                                            </div>
+
+                                            <div>
+
+                                                <strong>
+                                                    <%= company.name %>
+                                                </strong>
+
+                                                <span>
+                                                    Company
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Industry -->
+
+                                    <td>
+
+                                        <%= company.industry || "—" %>
+
+                                    </td>
+
+
+                                    <!-- Location -->
+
+                                    <td>
+
+                                        <%= company.location || "—" %>
+
+                                    </td>
+
+
+                                    <!-- Applications -->
+
+                                    <td>
+
+                                        <strong>
+                                            <%= company.Internships.length %>
+                                        </strong>
+
+                                    </td>
+
+
+                                    <!-- Website -->
+
+                                    <td>
+
+                                        <% if (company.website) { %>
+
+                                            <a
+                                                href="<%= company.website %>"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                class="company-apply-btn"
+                                            >
+                                                Visit →
+                                            </a>
+
+                                        <% } else { %>
+
+                                            <span>—</span>
+
+                                        <% } %>
+
+                                    </td>
+
+                                </tr>
+
+                            <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,182 @@
+<%- include("../partials/head", { title: "Add Offer | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <div class="form-page-header">
+
+            <div>
+
+                <p class="form-breadcrumb">
+                    Dashboard / Offers / Add Offer
+                </p>
+
+                <h1>Add Offer</h1>
+
+                <p>
+                    Add offer details for
+                    <strong><%= internship.role %></strong>
+                    at
+                    <strong><%= internship.Company.name %></strong>.
+                </p>
+
+            </div>
+
+            <a
+                href="/internships/<%= internship.id %>"
+                class="form-back-btn"
+            >
+                ← Back
+            </a>
+
+        </div>
+
+
+        <form
+            action="/internships/<%= internship.id %>/offers"
+            method="POST"
+            class="internship-form"
+        >
+
+            <div class="form-card">
+
+                <div class="form-card-header">
+
+                    <div class="form-section-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <h2>Offer Information</h2>
+                        <p>Enter the details of the internship offer.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="offerDate">
+                            Offer Date <span>*</span>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="offerDate"
+                            name="offerDate"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="joiningDate">
+                            Joining Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="joiningDate"
+                            name="joiningDate"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="salary">
+                            Salary / Stipend
+                        </label>
+
+                        <input
+                            type="text"
+                            id="salary"
+                            name="salary"
+                            placeholder="e.g. ₹25,000/month"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="offerStatus">
+                            Offer Status
+                        </label>
+
+                        <select
+                            id="offerStatus"
+                            name="offerStatus"
+                        >
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="Accepted">
+                                Accepted
+                            </option>
+
+                            <option value="Declined">
+                                Declined
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="notes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="notes"
+                        name="notes"
+                        rows="6"
+                        placeholder="Add offer details, benefits, conditions, etc."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <a
+                    href="/internships/<%= internship.id %>"
+                    class="form-cancel-btn"
+                >
+                    Cancel
+                </a>
+
+                <button
+                    type="submit"
+                    class="form-submit-btn"
+                >
+                    + Save Offer
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

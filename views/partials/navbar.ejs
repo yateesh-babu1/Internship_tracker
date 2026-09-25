@@ -1,0 +1,95 @@
+<header class="top-navbar">
+
+    <div class="navbar-left">
+
+        <button
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            type="button"
+            aria-label="Open menu"
+        >
+            ☰
+        </button>
+
+        <div class="navbar-brand">
+            <div class="brand-icon">IT</div>
+            <span>InternTrack</span>
+        </div>
+
+        <nav class="main-navigation">
+
+            <a
+                href="/dashboard"
+                class="<%= currentPath === '/dashboard' ? 'active' : '' %>"
+            >
+                Dashboard
+            </a>
+
+            <a
+                href="/internships"
+                class="<%= currentPath.startsWith('/internships') ? 'active' : '' %>"
+            >
+                Internships
+            </a>
+
+            <a
+                href="/interviews"
+                class="<%= currentPath.startsWith('/interviews') ? 'active' : '' %>"
+            >
+                Interviews
+            </a>
+
+            <a
+                href="/offers"
+                class="<%= currentPath.startsWith('/offers') ? 'active' : '' %>"
+            >
+                Offers
+            </a>
+
+            <a
+                href="/companies"
+                class="<%= currentPath.startsWith('/companies') ? 'active' : '' %>"
+            >
+                Companies
+            </a>
+
+        </nav>
+
+    </div>
+
+    <div class="navbar-right">
+
+        <button
+            class="notification-btn"
+            type="button"
+            aria-label="Notifications"
+        >
+            🔔
+            <span class="notification-dot"></span>
+        </button>
+
+        <div class="profile-area">
+
+            <div class="profile-avatar">
+    <%= currentUser ? currentUser.firstName.charAt(0).toUpperCase() : "U" %>
+</div>
+
+            <div class="profile-info">
+               <strong>
+    <%= currentUser ? currentUser.firstName : "User" %>
+</strong>
+
+<span>
+    <%= currentUser && currentUser.role === "admin"
+        ? "Administrator"
+        : "Student Account" %>
+</span>
+            </div>
+
+            <span class="profile-arrow">⌄</span>
+
+        </div>
+
+    </div>
+
+</header>

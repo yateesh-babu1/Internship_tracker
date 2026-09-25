@@ -1,0 +1,221 @@
+<%- include("../partials/head", { title: "Students | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <!-- Header -->
+
+        <div class="admin-header">
+
+            <div>
+
+                <p class="admin-breadcrumb">
+                    InternTrack / Administration / Students
+                </p>
+
+                <h1>Registered Students</h1>
+
+                <p>
+                    View and manage registered student accounts.
+                </p>
+
+            </div>
+
+            <div class="admin-badge">
+                🛡️ Administrator
+            </div>
+
+        </div>
+
+
+        <!-- Students Panel -->
+
+        <div class="admin-panel">
+
+            <div class="admin-panel-header">
+
+                <div>
+
+                    <h2>Students</h2>
+
+                    <p>
+                        Total registered students:
+                        <strong><%= students.length %></strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <% if (students.length === 0) { %>
+
+                <!-- Empty -->
+
+                <div class="admin-empty-state">
+
+                    <div>
+                        👨‍🎓
+                    </div>
+
+                    <h3>
+                        No students registered
+                    </h3>
+
+                    <p>
+                        Registered students will appear here.
+                    </p>
+
+                </div>
+
+            <% } else { %>
+
+
+                <!-- Table -->
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Student
+                                </th>
+
+                                <th>
+                                    Email
+                                </th>
+
+                                <th>
+                                    Applications
+                                </th>
+
+                                <th>
+                                    Joined
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <% students.forEach(student => { %>
+
+                                <tr>
+
+                                    <!-- Student -->
+
+                                    <td>
+
+                                        <div class="student-cell">
+
+                                            <div class="student-avatar">
+
+                                                <%= student.firstName
+                                                    .charAt(0)
+                                                    .toUpperCase() %>
+
+                                            </div>
+
+                                            <div>
+
+                                                <strong>
+
+                                                    <%= student.firstName %>
+
+                                                    <%= student.lastName %>
+
+                                                </strong>
+
+                                                <span>
+                                                    Student
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Email -->
+
+                                    <td>
+
+                                        <%= student.email %>
+
+                                    </td>
+
+
+                                    <!-- Applications -->
+
+                                    <td>
+
+                                        <strong>
+
+                                            <%= student.Internships.length %>
+
+                                        </strong>
+
+                                    </td>
+
+
+                                    <!-- Joined -->
+
+                                    <td>
+
+                                        <%= new Date(
+                                            student.createdAt
+                                        ).toLocaleDateString() %>
+
+                                    </td>
+
+
+                                    <!-- Action -->
+
+                                    <td>
+
+                                        <a
+                                            href="/admin/students/<%= student.id %>"
+                                            class="company-apply-btn"
+                                        >
+
+                                            View →
+
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+
+                            <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

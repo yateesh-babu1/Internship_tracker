@@ -1,0 +1,164 @@
+<%- include("../partials/head", { title: "Companies | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <!-- PAGE HEADER -->
+        <div class="companies-header">
+
+            <div>
+                <p class="companies-breadcrumb">
+                    Dashboard / Companies
+                </p>
+
+                <h1>Companies</h1>
+
+                <p>
+                    Manage companies where you have applied or plan to apply.
+                </p>
+            </div>
+
+            <a href="/companies/new" class="add-company-btn">
+                + Add Company
+            </a>
+
+        </div>
+
+
+        <!-- COMPANY COUNT -->
+        <div class="company-summary-card">
+
+            <div class="company-summary-icon">
+                ◈
+            </div>
+
+            <div>
+                <span>Total Companies</span>
+
+                <strong>
+                    <%= companies.length %>
+                </strong>
+            </div>
+
+        </div>
+
+
+        <!-- COMPANIES -->
+        <% if (companies.length === 0) { %>
+
+            <div class="companies-empty">
+
+                <div class="companies-empty-icon">
+                    ◫
+                </div>
+
+                <h2>No companies yet</h2>
+
+                <p>
+                    Add your first company to start tracking internship applications.
+                </p>
+
+                <a href="/companies/new" class="empty-add-btn">
+                    + Add Your First Company
+                </a>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="companies-grid">
+
+                <% companies.forEach(company => { %>
+
+                    <div class="company-card">
+
+                        <div class="company-card-top">
+
+                            <div class="company-avatar">
+                                <%= company.name.charAt(0).toUpperCase() %>
+                            </div>
+
+                            <div class="company-title">
+
+                                <h2>
+                                    <%= company.name %>
+                                </h2>
+
+                                <% if (company.industry) { %>
+                                    <span>
+                                        <%= company.industry %>
+                                    </span>
+                                <% } %>
+
+                            </div>
+
+                        </div>
+
+
+                        <% if (company.location) { %>
+
+                            <div class="company-info">
+                                📍 <%= company.location %>
+                            </div>
+
+                        <% } %>
+
+
+                        <% if (company.website) { %>
+
+                            <div class="company-info">
+                                🌐
+                                <a
+                                    href="<%= company.website %>"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Visit Website
+                                </a>
+                            </div>
+
+                        <% } %>
+
+
+                        <% if (company.description) { %>
+
+                            <p class="company-description">
+                                <%= company.description %>
+                            </p>
+
+                        <% } %>
+
+
+                        <div class="company-card-footer">
+
+                            <span>
+                                Company
+                            </span>
+
+                            <a
+                                href="/internships/new"
+                                class="company-apply-btn"
+                            >
+                                Add Internship →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        <% } %>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>

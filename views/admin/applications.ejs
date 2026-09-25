@@ -1,0 +1,219 @@
+<%- include("../partials/head", { title: "Applications | InternTrack" }) %>
+
+<%- include("../partials/navbar") %>
+
+<%- include("../partials/sidebar") %>
+
+<main class="main-content">
+
+    <div class="page-content">
+
+        <!-- Header -->
+
+        <div class="admin-header">
+
+            <div>
+
+                <p class="admin-breadcrumb">
+                    InternTrack / Administration / Applications
+                </p>
+
+                <h1>Internship Applications</h1>
+
+                <p>
+                    View all internship applications submitted by students.
+                </p>
+
+            </div>
+
+            <div class="admin-badge">
+                🛡️ Administrator
+            </div>
+
+        </div>
+
+
+        <!-- Applications Panel -->
+
+        <div class="admin-panel">
+
+            <div class="admin-panel-header">
+
+                <div>
+
+                    <h2>All Applications</h2>
+
+                    <p>
+                        Total applications:
+                        <strong>
+                            <%= applications.length %>
+                        </strong>
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <% if (applications.length === 0) { %>
+
+                <div class="admin-empty-state">
+
+                    <div>📋</div>
+
+                    <h3>No applications found</h3>
+
+                    <p>
+                        Student internship applications will appear here.
+                    </p>
+
+                </div>
+
+            <% } else { %>
+
+                <div class="admin-table-wrapper">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Student</th>
+
+                                <th>Company</th>
+
+                                <th>Role</th>
+
+                                <th>Application Date</th>
+
+                                <th>Deadline</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            <% applications.forEach(application => { %>
+
+                                <tr>
+
+                                    <!-- Student -->
+
+                                    <td>
+
+                                        <div class="student-cell">
+
+                                            <div class="student-avatar">
+
+                                                <%= application.User.firstName
+                                                    .charAt(0)
+                                                    .toUpperCase() %>
+
+                                            </div>
+
+                                            <div>
+
+                                                <strong>
+
+                                                    <%= application.User.firstName %>
+
+                                                    <%= application.User.lastName %>
+
+                                                </strong>
+
+                                                <span>
+                                                    <%= application.User.email %>
+                                                </span>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- Company -->
+
+                                    <td>
+
+                                        <strong>
+                                            <%= application.Company.name %>
+                                        </strong>
+
+                                    </td>
+
+
+                                    <!-- Role -->
+
+                                    <td>
+
+                                        <%= application.role %>
+
+                                    </td>
+
+
+                                    <!-- Application Date -->
+
+                                    <td>
+
+                                        <%= new Date(
+                                            application.applicationDate
+                                        ).toLocaleDateString() %>
+
+                                    </td>
+
+
+                                    <!-- Deadline -->
+
+                                    <td>
+
+                                        <% if (application.deadline) { %>
+
+                                            <%= new Date(
+                                                application.deadline
+                                            ).toLocaleDateString() %>
+
+                                        <% } else { %>
+
+                                            <span>—</span>
+
+                                        <% } %>
+
+                                    </td>
+
+
+                                    <!-- Status -->
+
+                                    <td>
+
+                                        <span class="admin-status-badge">
+
+                                            <%= application.status %>
+
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            <% }) %>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            <% } %>
+
+        </div>
+
+    </div>
+
+</main>
+
+<%- include("../partials/footer") %>
